@@ -39,8 +39,6 @@ class TurtleRace():
         return self.turtles_list
 
     def at_finish_line(self):
-        # print(f"at_finish_line: {turtles}")
-        # for i in range(len(turtles)):
         for turtle in self.turtles_list:
             (x, y) = turtle.position()
             # print(f"{i} at pos { x, y}")
