@@ -24,11 +24,10 @@ class TurtleRace():
         y = self.INIT_Y
         self.turtles_list = []
         turtle_colors_selection = ["red", "orange", "green", "blue", "purple", "pink"]
-        assert len(turtle_colors_selection)>=self.NUM_OF_TURTLES, "not enough color to choose from"
+        assert len(turtle_colors_selection) >= self.NUM_OF_TURTLES, "not enough color to choose from"
         for i in range(self.NUM_OF_TURTLES):
             turtle_color = random.choice(turtle_colors_selection)
             turtle_colors_selection.remove(turtle_color)
-            print(turtle_color)
             cur_turtle = Turtle()
             self.turtles_list.append(cur_turtle)
             cur_turtle.penup()
@@ -38,6 +37,15 @@ class TurtleRace():
             y += self.TURTLES_SPACE_APART
         return self.turtles_list
 
+    def start_race(self):
+        while not self.at_finish_line():
+            self.run_race()
+        self.screen.exitonclick()
+
+    def run_race(self):
+        for turtle in self.turtles_list:
+            turtle.forward(random.randint(1, self.STEP))
+
     def at_finish_line(self):
         for turtle in self.turtles_list:
             (x, y) = turtle.position()
@@ -46,15 +54,6 @@ class TurtleRace():
                 print(f"{turtle.color()[1]} turtle won")
                 return True
         return False
-
-    def run_race(self):
-        for turtle in self.turtles_list:
-            turtle.forward(random.randint(1, self.STEP))
-
-    def start_race(self):
-        while not self.at_finish_line():
-            self.run_race()
-        self.screen.exitonclick()
 
 
 race = TurtleRace()
