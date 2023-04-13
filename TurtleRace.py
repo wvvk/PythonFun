@@ -2,7 +2,7 @@ from turtle import Turtle, Screen
 import random
 
 
-class TurtleRace():
+class TurtleRace:
     NUM_OF_TURTLES = 5
     SCREEN_WIDTH = 500
     SCREEN_HEIGHT = 500
@@ -35,25 +35,26 @@ class TurtleRace():
             cur_turtle.color(turtle_color)
             cur_turtle.setpos(x=x, y=y)
             y += self.TURTLES_SPACE_APART
-        return self.turtles_list
+
+    def run_race(self, turtle):
+        turtle.forward(random.randint(1, self.STEP))
+
+    def at_finish_line(self, turtle):
+        (x, y) = turtle.position()
+        if x >= self.SCREEN_WIDTH / 2 - self.SIZE_OF_TURTLE:
+            print(f"{turtle.color()[1]} turtle won")
+            return True
+        return False
 
     def start_race(self):
-        while not self.at_finish_line():
-            self.run_race()
+        race_on = True
+        while race_on:
+            for turtle in self.turtles_list:
+                self.run_race(turtle)
+                if self.at_finish_line(turtle):
+                    race_on = False
+                    break
         self.screen.exitonclick()
-
-    def run_race(self):
-        for turtle in self.turtles_list:
-            turtle.forward(random.randint(1, self.STEP))
-
-    def at_finish_line(self):
-        for turtle in self.turtles_list:
-            (x, y) = turtle.position()
-            # print(f"{i} at pos { x, y}")
-            if x >= self.SCREEN_WIDTH / 2 - self.SIZE_OF_TURTLE:
-                print(f"{turtle.color()[1]} turtle won")
-                return True
-        return False
 
 
 race = TurtleRace()
