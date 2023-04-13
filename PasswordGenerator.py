@@ -1,5 +1,7 @@
 import random
 
+#TODO: change to use secrets
+
 def generate_password(n_char, n_sym, n_num):
     num_list = [str(i) for i in range(0, 10)]
     char_list = [chr(c) for c in range(65, 91)] + [chr(c) for c in range(97, 123)]
