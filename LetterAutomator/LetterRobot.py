@@ -4,7 +4,6 @@ import os
 class LetterAutomator:
     def __init__(self):
         self.invited_guests = []
-        self.template_letter = []
 
     def read_inivited(self, file_name):
         try:
@@ -21,8 +20,7 @@ class LetterAutomator:
     def read_template(self):
         try:
             with open(TEMPLATE_LETTER) as file:
-                self.template_letter = file.readlines()
-                print(self.template_letter)
+                self.template_letter = file.read()
         except:
             print("missing starting letter")
 
@@ -33,11 +31,11 @@ class LetterAutomator:
     def create_letter(self, name, template_letter):
         try:
             with open(f"{INVITATION_FOLDER}/{name}_invite.txt", "w") as file:
-                for line in template_letter:
-                    file.write(line.replace("[name]", name))
+                file.write(template_letter.replace(PLACEHODER, name))
         except:
             print("error opening file to write letters")
 
+PLACEHODER = "[name]"
 path = "."
 GUESTLIST_FOLDER = "Input/Names"
 TEMPLATE_LETTER_FOLDER = "Input/Letters"
