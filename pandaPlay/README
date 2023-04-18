@@ -1,0 +1,4 @@
+probably no need to use panda and data frame for such small csv
+but playing around with pandas
+
+python -m unittest test_nato_phonetics.py 
