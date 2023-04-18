@@ -1,19 +1,18 @@
-import pandas as pd
+import unittest
+from nato_phonetics import NATOPhonetics
 
 
-class NATOPhonetics:
-    def __init__(self, filename):
-        self.phonetics_df = pd.read_csv(filename)
+class TestNATOPhonetics(unittest.TestCase):
+    def setUp(self):
+        self.filename = "nato_phonetic_alphabet.csv"
+        self.nato_phonetics = NATOPhonetics(self.filename)
 
-    def name_to_code(self, name):
-        return [self.phonetics_df[self.phonetics_df.letter == char.upper()].iloc[0]['code'] for char in name]
+    def test_name_to_code(self):
+        name = "John"
+        expected_code_list = ['Juliet', 'Oscar', 'Hotel', 'November']
+        actual_code_list = self.nato_phonetics.name_to_code(name)
+        self.assertEqual(actual_code_list, expected_code_list)
 
 
 if __name__ == '__main__':
-    NATO_PHONETICS_FILE = "nato_phonetic_alphabet.csv"
-    nato_phonetics = NATOPhonetics(NATO_PHONETICS_FILE)
-
-    while True:
-        name = input('Please input your name:')
-        code_list = nato_phonetics.name_to_code(name)
-        print(code_list)
+    unittest.main()
