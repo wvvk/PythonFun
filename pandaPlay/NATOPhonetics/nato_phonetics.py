@@ -6,6 +6,8 @@ class NATOPhonetics:
         self.phonetics_df = pd.read_csv(filename)
 
     def name_to_code(self, name):
+        if not name.isalpha():
+            raise ValueError("Only alphabetical characters are allowed.")
         return [self.phonetics_df[self.phonetics_df.letter == char.upper()].iloc[0]['code'] for char in name]
 
 
@@ -15,5 +17,8 @@ if __name__ == '__main__':
 
     while True:
         name = input('Please input your name:')
-        code_list = nato_phonetics.name_to_code(name)
-        print(code_list)
+        try:
+            code_list = nato_phonetics.name_to_code(name)
+            print(code_list)
+        except ValueError as errmsg:
+            print(errmsg)
