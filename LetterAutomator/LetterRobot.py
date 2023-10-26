@@ -1,5 +1,6 @@
 import os
 
+#Winnie Kam
 
 class LetterAutomator:
     def __init__(self):
