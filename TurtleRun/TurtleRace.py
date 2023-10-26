@@ -2,6 +2,7 @@
 from turtle import Turtle, Screen
 import random
 
+#Winnie Kam
 
 class TurtleRace:
     NUM_OF_TURTLES = 5
