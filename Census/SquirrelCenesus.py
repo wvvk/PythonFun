@@ -1,5 +1,7 @@
 import pandas as pd
 
+#Winnie Kam
+
 # https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw
 INPUT_FILE = "2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv"
 OUTPUT_FILE = "sq_color_count.csv"
