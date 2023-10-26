@@ -1,6 +1,7 @@
 
 import random
 
+#Winnie Kam
 #TODO: change to use secrets
 
 def generate_password(n_char, n_sym, n_num):
